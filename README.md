@@ -2,6 +2,7 @@
 
 This document explains how to set up, run, test, and manage FAQs using the FAQ API and its Admin Panel.
 
+
 **1️⃣ Project Overview**
 
 This project is a Frequently Asked Questions (FAQ) API built with:
@@ -20,6 +21,7 @@ The API allows users to:
 - Cache translations for faster responses
 - Manage FAQs via an Admin Panel
 
+
 **2️⃣ Installation & Setup**
 
 **Prerequisites**
@@ -31,10 +33,12 @@ Before starting, ensure you have installed:
 - Redis (For caching translations)
 - Docker & Docker Compose (For containerized deployment)
 
+Now within `CLI`:
+
 **Step 1: Clone the Repository**
 ```bash
 git clone <repository-url>  
-cd faqs_project
+cd Project-FAQ
 ```
 
 This downloads the project and moves into the project directory.
@@ -47,9 +51,12 @@ npm install
 
 This installs all required Node.js dependencies from `package.json`.
 
+
 **3️⃣ Running the Project**
 
 **Option 1: Run with Docker (Recommended)**
+
+Within `CLI`:
 
 **Step 1: Start the Containers**
 
@@ -104,16 +111,20 @@ redis-server
 **Step 2: Start the API**
 
 ``` bash
+# In Terminal
 npm start
 ```
 
-This starts the Express.js server on port 8000.
+This starts the Express.js server on port `8000` by default when hosting URI not given.
+
 
 **4️⃣ Environment Variables (.env Setup)**
 
 Create a `.env` file in the project root:
 
 ``` bash
+# Working with arbitrary values for local system
+
 # MongoDB connection  
 DATABASE_URI=mongodb://localhost:27017/FQA
 
@@ -129,11 +140,13 @@ GOOGLE_API_KEY=your_google_translate_api_key
 
 For Docker, MongoDB and Redis run as services (mongo and redis), so you don't need to change the defaults.
 
+
 **5️⃣ API Documentation**
 
 All API endpoints are prefixed with:
 
 ```bash
+# In local environment 
 http://localhost:8000/api/
 ```
 
@@ -177,6 +190,7 @@ curl -X GET "http://localhost:8000/api/faq-id/{faq_id}"
 
 Replace `{faq_id}` with an actual FAQ ID.
 
+
 **6️⃣ Admin Panel (FAQ Management UI)**
 
 The Admin Panel allows you to manage FAQs via a UI.
@@ -186,6 +200,7 @@ The Admin Panel allows you to manage FAQs via a UI.
 Open your browser and go to:
 
 ``` bash
+# In local environment 
 http://localhost:8000/admin
 ```
 
@@ -199,7 +214,7 @@ Note: You can change the username and password in `server.js`:
 app.use(  
   adminBro.options.rootPath,  
   expressBasicAuth({  
-    users: { admin: "password" },  
+    users: { admin: "password" }, # Here user: admin and password: password 
     challenge: true,  
   })  
 );
@@ -213,6 +228,7 @@ Once logged in, you can:
 - Delete FAQs
 - View FAQ translations
 
+
 **7️⃣ Running Tests**
 
 This project includes unit tests using Mocha & Chai.
@@ -220,6 +236,7 @@ This project includes unit tests using Mocha & Chai.
 **Run all tests:**
 
 ``` bash
+# In CLI
 npm run test
 ```
 
@@ -228,6 +245,7 @@ Runs all tests using a MongoDB in-memory server.
 **How Tests Work:**
 - `setup.js` creates a test database before running tests.
 - `faq.test.js` verifies that the API correctly creates, retrieves, and translates FAQs.
+
 
 **8️⃣ Deployment (Production Ready)**
 
@@ -239,6 +257,7 @@ docker-compose -f docker-compose.prod.yml up --build -d
 
 Runs the API in detached mode (`-d`), meaning it runs in the background.
 
+
 **9️⃣ Technologies Used**
 
 - Node.js & Express.js – API backend
@@ -248,6 +267,7 @@ Runs the API in detached mode (`-d`), meaning it runs in the background.
 - Docker & Docker Compose – Containerized deployment
 - AdminBro – Admin panel for managing FAQs
 - Mocha & Chai – Unit testing framework
+
 
 **🔟 License**
 
