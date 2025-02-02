@@ -1,0 +1,26 @@
+{
+  "name": "faqs_project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@admin-bro/express": "^3.1.0",
+    "@admin-bro/mongoose": "^1.1.0",
+    "@google-cloud/translate": "^8.5.0",
+    "admin-bro": "^4.0.1",
+    "body-parser": "^1.20.3",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-basic-auth": "^1.2.1",
+    "mongoose": "^8.9.6",
+    "redis": "^4.7.0",
+    "tslib": "^2.8.1"
+  },
+  "type": "module"
+}
