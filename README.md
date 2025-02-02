@@ -96,22 +96,16 @@ This stops and removes all running containers.
 
 If you're not using Docker, ensure MongoDB and Redis are running.
 
-Start MongoDB:
-
-``` bash
-mongod --dbpath=/path/to/data
-```
-
 Start Redis:
 
 ``` bash
+# In CLI
 redis-server
 ```
 
 **Step 2: Start the API**
 
 ``` bash
-# In Terminal
 npm start
 ```
 
@@ -125,7 +119,7 @@ Create a `.env` file in the project root:
 ``` bash
 # Working with arbitrary values for local system
 
-# MongoDB connection  
+# MongoDB connection with mongoose ODM
 DATABASE_URI=mongodb://localhost:27017/FQA
 
 # Redis connection  
