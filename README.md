@@ -1,4 +1,4 @@
-# FAQ API Project - Complete Documentation & Admin Panel Guide
+*** FAQ API Project - Complete Documentation & Admin Panel Guide ***
 
 This document explains how to set up, run, test, and manage FAQs using the FAQ API and its Admin Panel.
 
@@ -114,10 +114,10 @@ This starts the Express.js server on port 8000.
 Create a `.env` file in the project root:
 
 ``` bash
-**# MongoDB connection**  
+# MongoDB connection  
 DATABASE_URI=mongodb://localhost:27017/FQA
 
-**# Redis connection**  
+**Redis connection**  
 REDIS_HOST=localhost  
 REDIS_PORT=6379 
 REDIS_USERNAME=default  
