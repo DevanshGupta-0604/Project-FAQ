@@ -1,8 +1,8 @@
-*** FAQ API Project - Complete Documentation & Admin Panel Guide ***
+**FAQ API Project - Complete Documentation & Admin Panel Guide**
 
 This document explains how to set up, run, test, and manage FAQs using the FAQ API and its Admin Panel.
 
-## 1️⃣ Project Overview
+**1️⃣ Project Overview**
 
 This project is a Frequently Asked Questions (FAQ) API built with:
 
@@ -20,9 +20,9 @@ The API allows users to:
 - Cache translations for faster responses
 - Manage FAQs via an Admin Panel
 
-## 2️⃣ Installation & Setup
+**2️⃣ Installation & Setup**
 
-### Prerequisites
+**Prerequisites**
 
 Before starting, ensure you have installed:
 
@@ -31,7 +31,7 @@ Before starting, ensure you have installed:
 - Redis (For caching translations)
 - Docker & Docker Compose (For containerized deployment)
 
-### Step 1: Clone the Repository
+**Step 1: Clone the Repository**
 ```bash
 git clone <repository-url>  
 cd faqs_project
@@ -39,7 +39,7 @@ cd faqs_project
 
 This downloads the project and moves into the project directory.
 
-### Step 2: Install Dependencies
+**Step 2: Install Dependencies**
 
 ``` bash
 npm install
@@ -47,11 +47,11 @@ npm install
 
 This installs all required Node.js dependencies from `package.json`.
 
-## 3️⃣ Running the Project
+**3️⃣ Running the Project**
 
-### Option 1: Run with Docker (Recommended)
+**Option 1: Run with Docker (Recommended)**
 
-#### Step 1: Start the Containers
+**Step 1: Start the Containers**
 
 ``` bash
 docker-compose up --build
@@ -64,7 +64,7 @@ This will:
   - MongoDB database
   - Redis cache
 
-#### Step 2: Verify Running Containers
+**Step 2: Verify Running Containers**
 
 ``` bash
 **docker ps**
@@ -75,7 +75,7 @@ You should see containers running for:
 - faqs_project_mongo (MongoDB)
 - faqs_project_redis (Redis)
 
-#### Step 3: Stop the Containers
+**Step 3: Stop the Containers**
 
 ``` bash
 **docker-compose down**
@@ -83,9 +83,9 @@ You should see containers running for:
 
 This stops and removes all running containers.
 
-### Option 2: Run Locally (Without Docker)
+**Option 2: Run Locally (Without Docker)**
 
-#### Step 1: Start MongoDB & Redis Manually
+**Step 1: Start MongoDB & Redis Manually**
 
 If you're not using Docker, ensure MongoDB and Redis are running.
 
@@ -101,7 +101,7 @@ Start Redis:
 redis-server
 ```
 
-#### Step 2: Start the API
+**Step 2: Start the API**
 
 ``` bash
 npm start
@@ -109,7 +109,7 @@ npm start
 
 This starts the Express.js server on port 8000.
 
-## 4️⃣ Environment Variables (.env Setup)
+**4️⃣ Environment Variables (.env Setup)**
 
 Create a `.env` file in the project root:
 
@@ -117,19 +117,19 @@ Create a `.env` file in the project root:
 # MongoDB connection  
 DATABASE_URI=mongodb://localhost:27017/FQA
 
-**Redis connection**  
+# Redis connection  
 REDIS_HOST=localhost  
 REDIS_PORT=6379 
 REDIS_USERNAME=default  
 REDIS_PASSWORD=your_redis_password
 
-**# Google Translate API**  
+# Google Translate API 
 GOOGLE_API_KEY=your_google_translate_api_key
 ```
 
 For Docker, MongoDB and Redis run as services (mongo and redis), so you don't need to change the defaults.
 
-## 5️⃣ API Documentation
+**5️⃣ API Documentation**
 
 All API endpoints are prefixed with:
 
@@ -137,7 +137,7 @@ All API endpoints are prefixed with:
 http://localhost:8000/api/
 ```
 
-### Create a New FAQ
+**Create a New FAQ**
 
 ``` bash
 curl -X POST http://localhost:8000/api/faq/create -H "Content-Type: application/json" -d '{"question": "What is Node.js?", "answer": "Node.js is a JavaScript runtime.", "lang": "hi"}'
@@ -145,7 +145,7 @@ curl -X POST http://localhost:8000/api/faq/create -H "Content-Type: application/
 
 Creates an FAQ in English & translates it into Hindi.
 
-### Get All FAQs (Default: English)
+**Get All FAQs (Default: English)**
 
 ``` bash
 curl -X GET "http://localhost:8000/api/faqs/all"
@@ -153,7 +153,7 @@ curl -X GET "http://localhost:8000/api/faqs/all"
 
 Retrieves all FAQs in English.
 
-### Get FAQs in a Specific Language (e.g., Hindi)
+**Get FAQs in a Specific Language (e.g., Hindi)**
 
 ``` bash
 curl -X GET "http://localhost:8000/api/faqs/all?lang=hi"
@@ -161,7 +161,7 @@ curl -X GET "http://localhost:8000/api/faqs/all?lang=hi"
 
 Retrieves FAQs translated into Hindi.
 
-### Get All FAQs with IDs
+**Get All FAQs with IDs**
 
 ``` bash
 curl -X GET "http://localhost:8000/api/faqs/ids"
@@ -169,7 +169,7 @@ curl -X GET "http://localhost:8000/api/faqs/ids"
 
 Retrieves all FAQs along with their IDs.
 
-### Get a Specific FAQ by ID
+**Get a Specific FAQ by ID**
 
 ``` bash
 curl -X GET "http://localhost:8000/api/faq-id/{faq_id}"
@@ -177,11 +177,11 @@ curl -X GET "http://localhost:8000/api/faq-id/{faq_id}"
 
 Replace `{faq_id}` with an actual FAQ ID.
 
-## 6️⃣ Admin Panel (FAQ Management UI)
+**6️⃣ Admin Panel (FAQ Management UI)**
 
 The Admin Panel allows you to manage FAQs via a UI.
 
-### Access the Admin Panel
+**Access the Admin Panel**
 
 Open your browser and go to:
 
@@ -189,7 +189,7 @@ Open your browser and go to:
 http://localhost:8000/admin
 ```
 
-#### Login Credentials:
+**Login Credentials:**
 - Username: admin
 - Password: password
 
@@ -205,7 +205,7 @@ app.use(
 );
 ```
 
-### Admin Panel Features
+**Admin Panel Features**
 
 Once logged in, you can:
 - Create a new FAQ
@@ -213,11 +213,11 @@ Once logged in, you can:
 - Delete FAQs
 - View FAQ translations
 
-## 7️⃣ Running Tests
+**7️⃣ Running Tests**
 
 This project includes unit tests using Mocha & Chai.
 
-### Run all tests:
+**Run all tests:**
 
 ``` bash
 npm run test
@@ -225,11 +225,11 @@ npm run test
 
 Runs all tests using a MongoDB in-memory server.
 
-### How Tests Work:
+**How Tests Work:**
 - `setup.js` creates a test database before running tests.
 - `faq.test.js` verifies that the API correctly creates, retrieves, and translates FAQs.
 
-## 8️⃣ Deployment (Production Ready)
+**8️⃣ Deployment (Production Ready)**
 
 For production deployment, update your `.env` and run:
 
@@ -239,7 +239,7 @@ docker-compose -f docker-compose.prod.yml up --build -d
 
 Runs the API in detached mode (`-d`), meaning it runs in the background.
 
-## 9️⃣ Technologies Used
+**9️⃣ Technologies Used**
 
 - Node.js & Express.js – API backend
 - MongoDB – Stores FAQ data
@@ -249,6 +249,6 @@ Runs the API in detached mode (`-d`), meaning it runs in the background.
 - AdminBro – Admin panel for managing FAQs
 - Mocha & Chai – Unit testing framework
 
-## 🔟 License
+**🔟 License**
 
 This project is licensed under the **ISC License**.
