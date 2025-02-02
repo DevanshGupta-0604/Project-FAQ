@@ -34,7 +34,6 @@ app.use(bodyParser.urlencoded({ extended: true })); // For parsing application/x
 app.use('/api', faqRoutes); // prefix all routes with 'api' path
 
 // Start the server if not testing environment
-const PORT = process.env.PORT || 5000;
 if (process.env.NODE_ENV !== 'test') {
   app.listen(PORT, (err) => {
     console.log(err ? `ERROR: ${err}` : `Server listening at PORT: ${PORT});
