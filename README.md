@@ -32,9 +32,9 @@ Before starting, ensure you have installed:
 - Docker & Docker Compose (For containerized deployment)
 
 ### Step 1: Clone the Repository
-
-**git clone <repository-url>**  
-**cd faqs_project**
+```bash
+git clone <repository-url>  
+cd faqs_project
 
 This downloads the project and moves into the project directory.
 
