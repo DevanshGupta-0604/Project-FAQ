@@ -9,7 +9,7 @@ services:
     environment:
       GOOGLE_APPLICATION_CREDENTIALS: /app/credentials.json
       REDIS_URI: ${REDIS_URI}
-      MONGODB_URI: mongodb://mongo:27017/your-db-name  # MongoDB connection URI
+      MONGODB_URI: mongodb://mongo:27017/FQA  # MongoDB connection URI
       NODE_ENV: production
     volumes:
       - .:/app
