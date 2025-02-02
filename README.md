@@ -147,7 +147,10 @@ http://localhost:8000/api/
 **Create a New FAQ**
 
 ``` bash
-curl -X POST http://localhost:8000/api/faq/create -H "Content-Type: application/json" -d '{"question": "What is Node.js?", "answer": "Node.js is a JavaScript runtime.", "lang": "hi"}'
+curl -X POST
+http://localhost:8000/api/faq/create
+-H"Content-Type: application/json"
+-d '{"question": "What is Node.js?", "answer": "Node.js is a JavaScript runtime.", "lang": "hi"}'
 ```
 
 Creates an FAQ in English & translates it into Hindi.
@@ -155,7 +158,8 @@ Creates an FAQ in English & translates it into Hindi.
 **Get All FAQs (Default: English)**
 
 ``` bash
-curl -X GET "http://localhost:8000/api/faqs/all"
+curl -X GET
+"http://localhost:8000/api/faqs/all"
 ```
 
 Retrieves all FAQs in English.
@@ -163,7 +167,8 @@ Retrieves all FAQs in English.
 **Get FAQs in a Specific Language (e.g., Hindi)**
 
 ``` bash
-curl -X GET "http://localhost:8000/api/faqs/all?lang=hi"
+curl -X GET
+"http://localhost:8000/api/faqs/all?lang=hi"
 ```
 
 Retrieves FAQs translated into Hindi.
@@ -171,7 +176,8 @@ Retrieves FAQs translated into Hindi.
 **Get All FAQs with IDs**
 
 ``` bash
-curl -X GET "http://localhost:8000/api/faqs/ids"
+curl -X GET
+"http://localhost:8000/api/faqs/ids"
 ```
 
 Retrieves all FAQs along with their IDs.
@@ -179,7 +185,8 @@ Retrieves all FAQs along with their IDs.
 **Get a Specific FAQ by ID**
 
 ``` bash
-curl -X GET "http://localhost:8000/api/faq-id/{faq_id}"
+curl -X GET
+"http://localhost:8000/api/faq-id/{faq_id}"
 ```
 
 Replace `{faq_id}` with an actual FAQ ID.
