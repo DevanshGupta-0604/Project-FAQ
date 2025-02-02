@@ -276,11 +276,11 @@ This project is licensed under the **ISC License**.
 
 ---
 
-# Contribution Guidelines
+**Contribution Guidelines**
 
 Thank you for considering contributing to this project! We welcome contributions to help improve and expand the functionality. To ensure a smooth process for everyone, please follow these guidelines:
 
-## How to Contribute
+**How to Contribute**
 
 1. **Fork the repository**: Start by forking this repository to your own GitHub account.
 2. **Clone your fork**: Clone the repository to your local machine to work on your changes as follow:
@@ -300,24 +300,26 @@ Thank you for considering contributing to this project! We welcome contributions
    - **refactor**: for code changes that neither fix a bug nor add a feature
    - **test**: for adding or modifying tests
 8. **Push your changes**: Once you’re happy with your changes, push them to your forked repository.
-   **git push origin feature/your-feature-name**
+   ``` bash
+   git push origin feature/your-feature-name
+   ```
 
-## Pull Request Process
+**Pull Request Process**
 
 1. **Open a pull request (PR)**: When your changes are ready, open a pull request to the main repository. Be sure to describe what you’ve done and any relevant details for the reviewers.
 2. **Review and feedback**: The repository maintainers will review your changes. Be prepared to make adjustments based on their feedback.
 3. **Merge**: After approval, the pull request will be merged into the main branch.
 
-## Code of Conduct
+**Code of Conduct**
 
 Please be respectful and considerate to everyone. We want to foster a welcoming and inclusive environment for all contributors.
 
-## Issue Reporting
+**Issue Reporting**
 
 - When reporting bugs, please include steps to reproduce the issue, any relevant logs, and details about your environment (e.g., operating system, dependencies).
 - If suggesting a new feature, describe it thoroughly with use cases and examples where possible.
 
-## Testing
+**Testing**
 
 - Please ensure that your changes don’t break existing functionality.
 - If applicable, add tests to cover your changes.
