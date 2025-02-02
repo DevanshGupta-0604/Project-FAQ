@@ -9,3 +9,10 @@ yarn-error.log*
 # npm package-lock files
 package-lock.json
 yarn.lock
+
+.git/
+.env
+
+# Production Files
+/dist/
+build/
