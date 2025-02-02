@@ -35,12 +35,15 @@ Before starting, ensure you have installed:
 ```bash
 git clone <repository-url>  
 cd faqs_project
+```
 
 This downloads the project and moves into the project directory.
 
 ### Step 2: Install Dependencies
 
-**npm install**
+``` bash
+npm install
+```
 
 This installs all required Node.js dependencies from `package.json`.
 
@@ -50,7 +53,9 @@ This installs all required Node.js dependencies from `package.json`.
 
 #### Step 1: Start the Containers
 
-**docker-compose up --build**
+``` bash
+docker-compose up --build
+```
 
 This will:
 - Build the API image from `Dockerfile`.
@@ -61,7 +66,9 @@ This will:
 
 #### Step 2: Verify Running Containers
 
+``` bash
 **docker ps**
+```
 
 You should see containers running for:
 - faqs_project_app (API server)
@@ -70,7 +77,9 @@ You should see containers running for:
 
 #### Step 3: Stop the Containers
 
+``` bash
 **docker-compose down**
+```
 
 This stops and removes all running containers.
 
@@ -82,15 +91,21 @@ If you're not using Docker, ensure MongoDB and Redis are running.
 
 Start MongoDB:
 
-**mongod --dbpath=/path/to/data**
+``` bash
+mongod --dbpath=/path/to/data
+```
 
 Start Redis:
 
-**redis-server**
+``` bash
+redis-server
+```
 
 #### Step 2: Start the API
 
-**npm start**
+``` bash
+npm start
+```
 
 This starts the Express.js server on port 8000.
 
@@ -98,17 +113,19 @@ This starts the Express.js server on port 8000.
 
 Create a `.env` file in the project root:
 
+``` bash
 **# MongoDB connection**  
-**DATABASE_URI=mongodb://localhost:27017/FQA**
+DATABASE_URI=mongodb://localhost:27017/FQA
 
 **# Redis connection**  
-**REDIS_HOST=localhost**  
-**REDIS_PORT=6379**  
-**REDIS_USERNAME=default**  
-**REDIS_PASSWORD=your_redis_password**
+REDIS_HOST=localhost  
+REDIS_PORT=6379 
+REDIS_USERNAME=default  
+REDIS_PASSWORD=your_redis_password
 
 **# Google Translate API**  
-**GOOGLE_API_KEY=your_google_translate_api_key**
+GOOGLE_API_KEY=your_google_translate_api_key
+```
 
 For Docker, MongoDB and Redis run as services (mongo and redis), so you don't need to change the defaults.
 
@@ -116,35 +133,47 @@ For Docker, MongoDB and Redis run as services (mongo and redis), so you don't ne
 
 All API endpoints are prefixed with:
 
-**http://localhost:8000/api/**
+```bash
+http://localhost:8000/api/
+```
 
 ### Create a New FAQ
 
-**curl -X POST http://localhost:8000/api/faq/create -H "Content-Type: application/json" -d '{"question": "What is Node.js?", "answer": "Node.js is a JavaScript runtime.", "lang": "hi"}'**
+``` bash
+curl -X POST http://localhost:8000/api/faq/create -H "Content-Type: application/json" -d '{"question": "What is Node.js?", "answer": "Node.js is a JavaScript runtime.", "lang": "hi"}'
+```
 
 Creates an FAQ in English & translates it into Hindi.
 
 ### Get All FAQs (Default: English)
 
-**curl -X GET "http://localhost:8000/api/faqs/all"**
+``` bash
+curl -X GET "http://localhost:8000/api/faqs/all"
+```
 
 Retrieves all FAQs in English.
 
 ### Get FAQs in a Specific Language (e.g., Hindi)
 
-**curl -X GET "http://localhost:8000/api/faqs/all?lang=hi"**
+``` bash
+curl -X GET "http://localhost:8000/api/faqs/all?lang=hi"
+```
 
 Retrieves FAQs translated into Hindi.
 
 ### Get All FAQs with IDs
 
-**curl -X GET "http://localhost:8000/api/faqs/ids"**
+``` bash
+curl -X GET "http://localhost:8000/api/faqs/ids"
+```
 
 Retrieves all FAQs along with their IDs.
 
 ### Get a Specific FAQ by ID
 
-**curl -X GET "http://localhost:8000/api/faq-id/{faq_id}"**
+``` bash
+curl -X GET "http://localhost:8000/api/faq-id/{faq_id}"
+```
 
 Replace `{faq_id}` with an actual FAQ ID.
 
@@ -156,7 +185,9 @@ The Admin Panel allows you to manage FAQs via a UI.
 
 Open your browser and go to:
 
-**http://localhost:8000/admin**
+``` bash
+http://localhost:8000/admin
+```
 
 #### Login Credentials:
 - Username: admin
@@ -164,13 +195,15 @@ Open your browser and go to:
 
 Note: You can change the username and password in `server.js`:
 
-**app.use(  
+``` bash
+app.use(  
   adminBro.options.rootPath,  
   expressBasicAuth({  
     users: { admin: "password" },  
     challenge: true,  
   })  
-);**
+);
+```
 
 ### Admin Panel Features
 
@@ -186,7 +219,9 @@ This project includes unit tests using Mocha & Chai.
 
 ### Run all tests:
 
-**npm run test**
+``` bash
+npm run test
+```
 
 Runs all tests using a MongoDB in-memory server.
 
@@ -198,7 +233,9 @@ Runs all tests using a MongoDB in-memory server.
 
 For production deployment, update your `.env` and run:
 
-**docker-compose -f docker-compose.prod.yml up --build -d**
+``` bash
+docker-compose -f docker-compose.prod.yml up --build -d
+```
 
 Runs the API in detached mode (`-d`), meaning it runs in the background.
 
