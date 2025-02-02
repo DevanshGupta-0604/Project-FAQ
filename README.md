@@ -67,7 +67,7 @@ This will:
 **Step 2: Verify Running Containers**
 
 ``` bash
-**docker ps**
+docker ps
 ```
 
 You should see containers running for:
@@ -78,7 +78,7 @@ You should see containers running for:
 **Step 3: Stop the Containers**
 
 ``` bash
-**docker-compose down**
+docker-compose down
 ```
 
 This stops and removes all running containers.
