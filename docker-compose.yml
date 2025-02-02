@@ -1,1 +1,36 @@
+version: '3.8'
 
+services:
+  # The application service
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      GOOGLE_APPLICATION_CREDENTIALS: /app/credentials.json
+      REDIS_URI: ${REDIS_URI}
+      MONGODB_URI: mongodb://mongo:27017/your-db-name  # MongoDB connection URI
+      NODE_ENV: production
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
+      - mongo   # Ensure the app waits for MongoDB to start
+
+  # The Redis service
+  redis:
+    image: "redis:alpine"
+    ports:
+      - "6379:6379"
+
+  # The MongoDB service
+  mongo:
+    image: "mongo:latest"
+    ports:
+      - "27017:27017"  # Exposing MongoDB default port
+    volumes:
+      - mongo-data:/data/db  # Persist MongoDB data across container restarts
+
+# Define a volume to persist MongoDB data
+volumes:
+  mongo-data:
