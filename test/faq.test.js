@@ -3,27 +3,31 @@ import chaiHttp from 'chai-http';
 import server from '../server';  // Import express app
 import FAQ from '../models/FAQ/faqSchema';  // FAQ model
 import mongoose from 'mongoose';
-import dbConnection from '../database/FAQ/faqConnection';
+import { MongoMemoryServer } from 'mongodb-memory-server';
 
 chai.use(chaiHttp);
 chai.should();
 
-describe('FAQs API', () => {
-  // Before each test, connect to the DB and clean up any existing records
-  before(async () => {
-    await dbConnection();
-  });
+let mongoServer;
 
-  beforeEach(async () => {
-    await FAQ.deleteMany({});  // Clear all FAQs before each test
-  });
+before(async () => {
+  mongoServer = await MongoMemoryServer.create();
+  const mongoUri = mongoServer.getUri();
 
-  after(async () => {
-    await mongoose.disconnect();  // Disconnect after tests
-  });
+  // Connect to the in-memory database
+  await mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true });
 
-  // Test the POST /api/faqs route
-  describe('POST /api/faqs', () => {
+  server = app.listen(8000);  // Start the app after DB connection
+});
+
+after(async () => {
+  await mongoose.disconnect();  // Disconnect from the DB
+  await mongoServer.stop();     // Stop the in-memory server
+  server.close();               // Close the app
+});
+
+  // Test the POST /api/faq/create route
+  describe('POST /api/faq/create', () => {
     it('should create a new FAQ', async () => {
       const faq = {
         question: 'What is Node.js?',
